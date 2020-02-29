@@ -4,8 +4,6 @@
 
 # Xcode
 #
-build/
-android/.idea
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -25,17 +23,25 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
+android/.idea
 build/
 .idea
 .gradle
 local.properties
 *.iml
 
+#expo-web
+#
+.expo
+web-build
+
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+yarn.lock
 
 # BUCK
 buck-out/
