@@ -1,12 +1,14 @@
-import * as types from '../../constants/ActionTypes'
+import {
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE
+} from '../../constants/ActionTypes'
 import { createActions } from 'redux-actions';
 
 export const {
-  login,
-  loginSuccess,
-  loginFailure
+  login
 } = createActions({
-  LOGIN: req => req,
-  LOGIN_SUCCESS: req => req,
-  LOGIN_FAILURE: req => req,
+  [LOGIN]: req => req,
+  [LOGIN_SUCCESS]: resp => resp,
+  [LOGIN_FAILURE]: error => error,
 });
