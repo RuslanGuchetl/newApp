@@ -26,10 +26,7 @@ import java.util.List;
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
     new BasePackageList().getPackageList(),
-    Arrays.<SingletonModule>asList(
-    new MainReactPackage(),
-    new VectorIconsPackage()
-    )
+    Arrays.<SingletonModule>asList()
   );
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -42,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+      packages.add(new VectorIconsPackage());
       return packages;
     }
 
