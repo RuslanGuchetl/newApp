@@ -2,7 +2,7 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_FAILURE
-} from '../../constants/ActionTypes'
+} from '../constants/ActionTypes'
 import { createActions } from 'redux-actions';
 
 export const {

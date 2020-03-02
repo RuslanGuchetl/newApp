@@ -1,0 +1,14 @@
+.input-with-icon-container {
+    padding: 10px;
+    min-height: 110px;
+}
+
+.input-with-icon-container .input {
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    color: #595d5f !important;
+}
+.input-with-icon-container .label {
+    color: #595d5f !important;
+}
