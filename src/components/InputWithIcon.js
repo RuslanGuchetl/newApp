@@ -5,7 +5,13 @@ import View from "react-native-web/dist/exports/View";
 import {connect} from "react-redux";
 import {nullError} from "../actions/form";
 
-const InputWithIcon = ({placeholder, icon, title, errorMessage, _nullError, name}) => {
+function InputWithIcon({placeholder, icon, title, errorMessage, _nullError, name, secureTextEntry, onChange}){
+
+    const handleOnChange = e => {
+        const {value} = e.target;
+        onChange(name, value)
+    };
+
     return (
         <View className="input-with-icon-container">
             <Text h4 className="label">{title}</Text>
@@ -15,6 +21,8 @@ const InputWithIcon = ({placeholder, icon, title, errorMessage, _nullError, name
                 errorMessage={errorMessage}
                 className="input"
                 onKeyPress={_nullError(name)}
+                onChange={handleOnChange}
+                secureTextEntry={secureTextEntry}
                 leftIcon={
                     <Icon
                         name={icon}

@@ -6,9 +6,13 @@ import {api} from "../service/client";
 export const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 export function* loginSaga({payload}) {
+    const {cb, ...params} = payload;
     try {
-        const response = yield call(api.post, '/user/authenticate', payload);
+        const response = yield call(api.post, '/user/authenticate', params);
         return yield put({type: LOGIN_SUCCESS, payload: response});
+        if(cb) {
+            cb();
+        }
     } catch (e) {
         yield put({type: LOGIN_FAILURE, payload: e})
     }

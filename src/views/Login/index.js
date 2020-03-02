@@ -5,21 +5,25 @@ import {connect} from 'react-redux';
 import {login} from "../../actions";
 import InputWithIcon from "../../components/InputWithIcon";
 import {STATUSES} from "../../constants/api";
+import {navigate} from "../../service/navigate";
 
 class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'test@test.test',
-            name: 'John Doe',
-            password: '1231231231'
-        }
+            username: '',
+            password: '',
+        };
+        this.navigate = navigate.bind(props.navigation);
     }
 
     login = () => {
-        const {email, password} = this.state;
         const {login} = this.props;
-        login({email, password})
+        login({...this.state, cb: this.navigate('Home')})
+    };
+
+    onChange = (name, value) => {
+        this.setState({[name]: value});
     };
 
     render() {
@@ -32,12 +36,15 @@ class LoginScreen extends React.Component {
                                    title="Username"
                                    errorMessage={errors.username || ''}
                                    name="username"
+                                   onChange={this.onChange}
                     />
                     <InputWithIcon placeholder="Your password"
                                    icon="key"
                                    title="Password"
                                    errorMessage={errors.password || ''}
                                    name="password"
+                                   onChange={this.onChange}
+                                   secureTextEntry={true}
                     />
                     <Button onPress={this.login} title="Sign in"/>
                 </View>
